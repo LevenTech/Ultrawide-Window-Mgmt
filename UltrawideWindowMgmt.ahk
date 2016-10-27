@@ -132,6 +132,10 @@ NumpadRight::
 	Send, ^#{Right}
 	Return
 
+NumpadClear::
+	Send, #{Tab}
+	Return
+	
 NumpadLeft::
 	Send, ^#{Left}
 	Return
