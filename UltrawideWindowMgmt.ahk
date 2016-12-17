@@ -53,7 +53,7 @@ HalfStandardWidth = 1108
 	SendLevel 1
 	Send !{ESC}
 	Return
-
+	
 #NumPadClear::
 ^NumPadClear::
 #^NumPadClear::
@@ -78,7 +78,7 @@ HalfStandardWidth = 1108
 
 
 
-
+NumPadIns::
 ^!Space::
 ^Space::
 #Space::
@@ -226,9 +226,11 @@ switchDesktopByNumber(targetDesktop)
     while(CurrentDesktop < targetDesktop) {
         Send ^#{Right}
         CurrentDesktop++
+	Sleep 100
     }
     while(CurrentDesktop > targetDesktop) {
         Send ^#{Left}
         CurrentDesktop--
+	Sleep 100
     }
 }
