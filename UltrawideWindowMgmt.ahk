@@ -32,16 +32,19 @@ HalfStandardWidth = 1108
 
 ^NumPadLeft::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%Col1Width%,%FullHeight%
 	Return
 
 ^!NumPadLeft::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%LeftHalfWidth%,%FullHeight%
 	Return
 
 !NumPadLeft::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%Left2ColWidth%,%FullHeight%
 	Return
 
@@ -58,21 +61,25 @@ HalfStandardWidth = 1108
 ^NumPadClear::
 #^NumPadClear::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %EndOfCol1%,%Top%,%Col2Width%,%FullHeight%
 	Return
 
 !NumPadRight::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Right2ColWidth%,%Top%,%Col3Width%,%FullHeight%
 	Return
 
 ^!NumPadRight::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %RightHalfStart%,%Top%,%RightHalfWidth%,%FullHeight%
 	Return
 
 ^NumPadRight::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %EndOfCol1%,%Top%,%Right2ColWidth%,%FullHeight%
 	Return
 
@@ -84,16 +91,19 @@ NumPadIns::
 #Space::
 !Space::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%StandardWidth%,%StandardHeight%
 	Return
 
 #NumPadLeft::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%HalfStandardWidth%,%StandardHeight%
 	Return
 
 #NumPadRight::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %RightHalfStart%,%StandardTop%,%HalfStandardWidth%,%StandardHeight%
 	Return
 
@@ -103,6 +113,7 @@ NumPadIns::
 ^NumPadEnd::
 ^#NumPadEnd::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%TopOfBottomHalf%,%LeftHalfWidth%,%HalfHeight%
 	Return
 
@@ -110,6 +121,7 @@ NumPadIns::
 ^NumPadPgDn::
 ^#NumPadPgDn::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %RightHalfStart%,%TopOfBottomHalf%,%RightHalfWidth%,%HalfHeight%
 	Return
 
@@ -117,6 +129,7 @@ NumPadIns::
 ^NumPadHome::
 ^#NumPadHome::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%LeftHalfWidth%,%HalfHeight%
 	Return
 
@@ -124,6 +137,7 @@ NumPadIns::
 ^NumPadPgUp::
 ^#NumPadPgUp::
 	WinGetTitle, Title, A
+	WinRestore, %Title%
 	WinMove, %Title% ,, %RightHalfStart%,%Top%,%RightHalfWidth%,%HalfHeight%
 	Return
 
