@@ -6,18 +6,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 Left = -8
 Top = 0
 
-Col1Width = 1150
-Left2ColWidth = 2305
+Col1Width = 1152
+Left2ColWidth = 2307
 
-Col2Width = 1170
+Col2Width = 1172
 
-Right2ColWidth = 2282
+Right2ColWidth = 2322
 Col3Width = 1170
 
 LeftHalfWidth = 1736
 RightHalfWidth = 1736
 RightHalfStart = 1712
 EndOfCol1 = 1127
+BegOfCol3 = 2282
 
 FullHeight = 1400
 StandardHeight = 1200
@@ -30,24 +31,28 @@ StandardLeft = 620
 StandardTop = 100
 HalfStandardWidth = 1109
 
+; LEFT THIRD OF SCREEN
 ^NumPadLeft::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%Col1Width%,%FullHeight%
 	Return
 
+; LEFT HALF OF SCREEN
 ^!NumPadLeft::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%LeftHalfWidth%,%FullHeight%
 	Return
 
+; LEFT TWO-THIRDS OF SCREEN
 !NumPadLeft::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %Left%,%Top%,%Left2ColWidth%,%FullHeight%
 	Return
 
+; ALT-TAB FOR WINDOW SWITCHING
 #NumPadUp::
 ^NumPadUp::
 ^!NumPadUp::
@@ -56,7 +61,8 @@ HalfStandardWidth = 1109
 	SendLevel 1
 	Send !{ESC}
 	Return
-	
+
+; MIDDLE THIRD OF SCREEN	
 #NumPadClear::
 ^NumPadClear::
 #^NumPadClear::
@@ -65,18 +71,21 @@ HalfStandardWidth = 1109
 	WinMove, %Title% ,, %EndOfCol1%,%Top%,%Col2Width%,%FullHeight%
 	Return
 
+; RIGHT THIRD OF SCREEN
 !NumPadRight::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
-	WinMove, %Title% ,, %Right2ColWidth%,%Top%,%Col3Width%,%FullHeight%
+	WinMove, %Title% ,, %BegOfCol3%,%Top%,%Col3Width%,%FullHeight%
 	Return
 
+; RIGHT HALF OF SCREEN
 ^!NumPadRight::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %RightHalfStart%,%Top%,%RightHalfWidth%,%FullHeight%
 	Return
 
+; RIGHT TWO THIRDS OF SCREEN
 ^NumPadRight::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
@@ -84,7 +93,7 @@ HalfStandardWidth = 1109
 	Return
 
 
-
+; CENTER
 NumPadIns::
 ^!Space::
 ^Space::
@@ -95,12 +104,14 @@ NumPadIns::
 	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%StandardWidth%,%StandardHeight%
 	Return
 
+; LEFT-CENTER
 #NumPadLeft::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%HalfStandardWidth%,%StandardHeight%
 	Return
 
+; RIGHT-CENTER
 #NumPadRight::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
@@ -108,7 +119,7 @@ NumPadIns::
 	Return
 
 
-
+; BOTTOM-LEFT CORNER
 #NumPadEnd::
 ^NumPadEnd::
 ^#NumPadEnd::
@@ -117,6 +128,7 @@ NumPadIns::
 	WinMove, %Title% ,, %Left%,%TopOfBottomHalf%,%LeftHalfWidth%,%HalfHeight%
 	Return
 
+; BOTTOM-RIGHT CORNER
 #NumPadPgDn::
 ^NumPadPgDn::
 ^#NumPadPgDn::
@@ -125,6 +137,7 @@ NumPadIns::
 	WinMove, %Title% ,, %RightHalfStart%,%TopOfBottomHalf%,%RightHalfWidth%,%HalfHeight%
 	Return
 
+; TOP-LEFT CORNER
 #NumPadHome::
 ^NumPadHome::
 ^#NumPadHome::
@@ -133,6 +146,7 @@ NumPadIns::
 	WinMove, %Title% ,, %Left%,%Top%,%LeftHalfWidth%,%HalfHeight%
 	Return
 
+; TOP-RIGHT CORNER
 #NumPadPgUp::
 ^NumPadPgUp::
 ^#NumPadPgUp::
@@ -141,41 +155,48 @@ NumPadIns::
 	WinMove, %Title% ,, %RightHalfStart%,%Top%,%RightHalfWidth%,%HalfHeight%
 	Return
 
-
+; MOVE 1 SCREEN RIGHT
 NumpadRight::
 	Send, ^#{Right}
 	Return
 
+; WIN-TAB (SHOW ALL DESKTOPS AND WINDOWS)
 NumpadClear::
 	Send, #{Tab}
 	Return
 	
+; MOVE 1 SCREEN LEFT
 NumpadLeft::
 	Send, ^#{Left}
 	Return
 
+; GO TO LAST DESKTOP
 NumPadUp::
     global CurrentDesktop, DesktopCount
     mapDesktopsFromRegistry()
 	switchDesktopByNumber(DesktopCount)
 	Return
 
+; GO TO FIRST DESKTOP
 NumPadDown::
 #^1::
 #^NumPad1::
 	switchDesktopByNumber(1)
 	Return
 
+; GO TO DESKTOP 2
 #^2::
 #^NumPad2::
 	switchDesktopByNumber(2)
 	Return
 
+; GO TO DESKTOP 3
 #^3::
 #^NumPad3::
 	switchDesktopByNumber(3)
 	Return
 
+; GO TO DESKTOP 4
 #^4::
 #^NumPad4::
 	switchDesktopByNumber(4)
