@@ -14,8 +14,8 @@ Col2Width = 1170
 Right2ColWidth = 2282
 Col3Width = 1170
 
-LeftHalfWidth = 1735
-RightHalfWidth = 1735
+LeftHalfWidth = 1736
+RightHalfWidth = 1736
 RightHalfStart = 1712
 EndOfCol1 = 1127
 
@@ -28,7 +28,7 @@ TopOfBottomHalf = 697
 
 StandardLeft = 620
 StandardTop = 100
-HalfStandardWidth = 1108
+HalfStandardWidth = 1109
 
 ^NumPadLeft::
 	WinGetTitle, Title, A
