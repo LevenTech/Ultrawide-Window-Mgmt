@@ -3,6 +3,66 @@
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
+;-----------------------------------|
+;                                   |
+; Ultrawide Windows by LevenTech    |
+;                                   |
+; Version 1.5 (9-21-17)             |
+;                                   |
+; Optional Add-Ons:                 |
+;  - Files2Folder                   |
+;-----------------------------------|
+
+
+; TRAY ICON CONFIGURATION
+;-------------------------
+Menu, Tray, Tip,Ultrawide Windows by LevenTech
+Menu, Tray, Icon, Ultrawide` Windows.ico, 1, 0
+ 
+Menu, Tray, NoStandard
+Menu, Tray, Add, Instructions, MyHelp
+Menu, Tray, Default, Instructions 
+Menu, Tray, Standard
+Return
+
+
+; HELP TEXT
+;-----------
+MyHelp: 
+	message = 
+	message = %message%`n NumLock should be OFF`n`n`n
+	message = %message%`n VIRTUAL DESKTOPS
+	message = %message%`n -------------------------------------------
+	message = %message%`n  Numpad 4/Left: `t`tMove Left 1 Desktop
+	message = %message%`n  Numpad 6/Right: `t`tMove Right 1 Desktop
+	message = %message%`n  Numpad 2/Down: `tFirst Desktop
+	message = %message%`n  Numpad 8/Up: `t`tLast Desktop
+	message = %message%`n
+	message = %message%`n  Ctrl+Windows+1: `t`tDesktop #1
+	message = %message%`n  Ctrl+Windows+2: `t`tDesktop #2
+	message = %message%`n  Ctrl+Windows+3: `t`tDesktop #3
+	message = %message%`n  Ctrl+Windows+4: `t`tDesktop #4
+
+	message = %message%`n`nSCREEN POSITION/SIZE
+	message = %message%`n -------------------------------------------
+	message = %message%`n NumPad 0: `t`tRegular Widescreen, Centered
+	message = %message%`n
+	message = %message%`n Windows+NumPad 7: `tTop Left Corner
+	message = %message%`n Windows+NumPad 9: `tTop Right Corner
+	message = %message%`n Windows+NumPad 1: `tBottom Left Corner
+	message = %message%`n Windows+NumPad 3: `tBottom Right Corner
+	message = %message%`n
+	message = %message%`n Ctrl+NumPad 4: `t`tLeft Third
+	message = %message%`n Ctrl+NumPad 4: `t`tLeft Third Fill (Center and Right Thirds)
+	message = %message%`n Ctrl+NumPad 5: `t`tCenter Third
+	message = %message%`n Ctrl+NumPad 6: `t`tRight Third
+	message = %message%`n Ctrl+NumPad 6: `t`tRight Third Fill (Left and Center Thirds)
+	MsgBox, , Ultrawide Windows by LevenTech, %message%
+	Return
+
+	
+; SCREEN PIXEL CONFIGURATION
+;----------------------------
 Left = -8
 Top = 0
 
@@ -30,6 +90,11 @@ TopOfBottomHalf = 697
 StandardLeft = 620
 StandardTop = 100
 HalfStandardWidth = 1109
+
+
+	
+; ACTUAL HOTKEYS AND ACTIONS
+;----------------------------
 
 ; LEFT THIRD OF SCREEN
 ^NumPadLeft::
