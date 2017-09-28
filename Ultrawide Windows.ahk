@@ -93,6 +93,44 @@ Return
 
 	
 
+#NumPad1::
+#NumPad2::
+#NumPad3::
+#NumPad4::
+#NumPad5::
+#NumPad6::
+#NumPad7::
+#NumPad8::
+#NumPad9::
+^NumPad1::
+^NumPad2::
+^NumPad3::
+^NumPad4::
+^NumPad5::
+^NumPad6::
+^NumPad7::
+^NumPad8::
+^NumPad9::
+!^NumPad1::
+!^NumPad2::
+!^NumPad3::
+!^NumPad4::
+!^NumPad5::
+!^NumPad6::
+!^NumPad7::
+!^NumPad8::
+!^NumPad9::
+	if (GetKeyState("NumLock", "T"))
+	{
+		MsgBox, 4, ,NumLock is ON. Turn it OFF?, 3
+		IfMsgBox, No
+			Return
+		IfMsgBox, Timeout
+			Return
+		SetNumLockState , Off
+	}
+Return
+
 	
 ; ACTUAL HOTKEYS AND ACTIONS
 ;----------------------------
@@ -161,10 +199,6 @@ Return
 
 ; CENTER
 NumPadIns::
-^!Space::
-^Space::
-#Space::
-!Space::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
 	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%StandardWidth%,%StandardHeight%
