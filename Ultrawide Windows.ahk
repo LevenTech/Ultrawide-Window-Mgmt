@@ -17,7 +17,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ; TRAY ICON CONFIGURATION
 ;-------------------------
 	Menu, Tray, Tip,Ultrawide Windows by LevenTech
-	Menu, Tray, Icon, Ultrawide` Windows.ico, 1, 0
+	Menu, Tray, Icon, %A_ScriptDir%\Icons\Ultrawide` Windows.ico, 1, 0
 	 
 	Menu, Tray, NoStandard
 	Menu, Tray, Add, Instructions, MyHelp
@@ -92,34 +92,15 @@ MyHelp:
 Return
 
 	
+; Next Desktop Background
+;---------------------------------
+NumPadDel::
+	Send, {AppsKey}
+	Sleep 100
+	Send, n
+Return
 
-#NumPad1::
-#NumPad2::
-#NumPad3::
-#NumPad4::
-#NumPad5::
-#NumPad6::
-#NumPad7::
-#NumPad8::
-#NumPad9::
-^NumPad1::
-^NumPad2::
-^NumPad3::
-^NumPad4::
-^NumPad5::
-^NumPad6::
-^NumPad7::
-^NumPad8::
-^NumPad9::
-!^NumPad1::
-!^NumPad2::
-!^NumPad3::
-!^NumPad4::
-!^NumPad5::
-!^NumPad6::
-!^NumPad7::
-!^NumPad8::
-!^NumPad9::
+NumPadDot::
 	if (GetKeyState("NumLock", "T"))
 	{
 		MsgBox, 4, ,NumLock is ON. Turn it OFF?, 3
