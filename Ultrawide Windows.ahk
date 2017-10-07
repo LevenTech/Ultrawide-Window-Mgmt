@@ -125,6 +125,28 @@ Return
 ; ACTUAL HOTKEYS AND ACTIONS
 ;----------------------------
 
+NumPad0:: 
+	Send, 0
+	TrayTip "0" Pressed, Turn off NumLock to Maximize Windows, , 16
+Return
+NumPad2:: 
+	Send, 2
+	TrayTip "2" Pressed, Turn off NumLock to go to First Desktop, , 16
+Return
+NumPad4::
+	Send, 4
+	TrayTip "4" Pressed, Turn off NumLock to move left 1 Desktop, , 16
+Return
+NumPad6:: 
+	Send, 6
+	TrayTip "6" Pressed, Turn off NumLock to move right 1 Desktop, , 16
+Return
+NumPad8:: 
+	Send, 8
+	TrayTip "8" Pressed, Turn off NumLock to go to First Desktop, , 16
+Return
+
+
 ; LEFT THIRD OF SCREEN
 ^NumPadLeft::
 	WinGetTitle, Title, A
