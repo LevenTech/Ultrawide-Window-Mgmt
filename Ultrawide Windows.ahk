@@ -127,7 +127,7 @@ Return
 
 NumPad0:: 
 	Send, 0
-	TrayTip "0" Pressed, Turn off NumLock to Maximize Windows, , 16
+	TrayTip "0" Pressed, Turn off NumLock to Center Windows, , 16
 Return
 NumPad2:: 
 	Send, 2
@@ -146,6 +146,24 @@ NumPad8::
 	TrayTip "8" Pressed, Turn off NumLock to go to First Desktop, , 16
 Return
 
+NumPadDiv::
+	if (GetKeyState("NumLock", "T"))
+	{
+		Send, /
+		TrayTip "/" Pressed, Turn off NumLock to Maximize Windows, , 16
+	} else
+	{
+		WinGetTitle, Title, A
+		WinGetPos, X, Y, Width, Height, %Title%
+		if (Width>3400 AND Height>1400)
+		{
+			WinRestore, %Title%
+		} else
+		{
+			WinMaximize, %Title%
+		}
+	}
+Return
 
 ; LEFT THIRD OF SCREEN
 ^NumPadLeft::
