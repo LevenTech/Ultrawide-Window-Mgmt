@@ -80,17 +80,20 @@ MyHelp:
 	message = %message%`n`nSCREEN POSITION/SIZE
 	message = %message%`n -------------------------------------------
 	message = %message%`n NumPad 0: `t`tRegular Widescreen, Centered
+	message = %message%`n NumPad /: `t`tMaximize/Restore Toggle
 	message = %message%`n
-	message = %message%`n Windows+NumPad 7: `tTop Left Corner
-	message = %message%`n Windows+NumPad 9: `tTop Right Corner
-	message = %message%`n Windows+NumPad 1: `tBottom Left Corner
-	message = %message%`n Windows+NumPad 3: `tBottom Right Corner
+	message = %message%`n Windows + NumPad 7: `tTop Left Corner
+	message = %message%`n Windows + NumPad 9: `tTop Right Corner
+	message = %message%`n Windows + NumPad 1: `tBottom Left Corner
+	message = %message%`n Windows + NumPad 3: `tBottom Right Corner
 	message = %message%`n
-	message = %message%`n Ctrl+NumPad 4: `t`tLeft Third
-	message = %message%`n Ctrl+NumPad 4: `t`tLeft Third Fill (Center and Right Thirds)
-	message = %message%`n Ctrl+NumPad 5: `t`tCenter Third
-	message = %message%`n Ctrl+NumPad 6: `t`tRight Third
-	message = %message%`n Ctrl+NumPad 6: `t`tRight Third Fill (Left and Center Thirds)
+	message = %message%`n Ctrl + NumPad 4: `t`tLeft Third
+	message = %message%`n Alt + NumPad 4: `t`tLeft Third Fill (Center and Right Thirds)
+	message = %message%`n
+	message = %message%`n Ctrl + NumPad 5: `t`tCenter Third
+	message = %message%`n
+	message = %message%`n Ctrl + NumPad 6: `t`tRight Third
+	message = %message%`n Alt + NumPad 6: `t`tRight Third Fill (Left and Center Thirds)
 	MsgBox, , Ultrawide Windows by LevenTech, %message%
 Return
 
