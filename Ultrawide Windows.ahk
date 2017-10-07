@@ -19,9 +19,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	Menu, Tray, Tip,Ultrawide Windows by LevenTech
 	Menu, Tray, Icon, %A_ScriptDir%\Icons\Ultrawide` Windows.ico, 1, 0
 	 
-	Menu, Tray, NoStandard
 	Menu, Tray, Add, Instructions, MyHelp
 	Menu, Tray, Default, Instructions 
+	Menu, Tray, NoStandard
 	Menu, Tray, Standard
 
 
@@ -54,6 +54,9 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	StandardLeft = 620
 	StandardTop = 100
 	HalfStandardWidth = 1109
+
+#Include %A_ScriptDir%\..\SeeThroughOrNot\
+#Include SeeThroughOrNot_addon.ahk
 Return
 
 
@@ -91,7 +94,7 @@ MyHelp:
 	MsgBox, , Ultrawide Windows by LevenTech, %message%
 Return
 
-	
+#IfWinActive ahk_class WorkerW
 ; Next Desktop Background
 ;---------------------------------
 NumPadDel::
@@ -103,16 +106,22 @@ Return
 NumPadDot::
 	if (GetKeyState("NumLock", "T"))
 	{
-		MsgBox, 4, ,NumLock is ON. Turn it OFF?, 3
+		MsgBox, 4, ,NumLock is ON. Turn it OFF and RETRY?, 3
 		IfMsgBox, No
 			Return
 		IfMsgBox, Timeout
 			Return
 		SetNumLockState , Off
+		Send, #d
+		Sleep 100
+		Send, {AppsKey}
+		Sleep 100
+		Send, n
 	}
 Return
 
-	
+#IfWinActive
+
 ; ACTUAL HOTKEYS AND ACTIONS
 ;----------------------------
 
