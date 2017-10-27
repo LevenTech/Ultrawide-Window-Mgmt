@@ -55,6 +55,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	StandardTop = 100
 	HalfStandardWidth = 1109
 
+
 #Include %A_ScriptDir%\..\SeeThroughOrNot\
 #Include SeeThroughOrNot_addon.ahk
 Return
@@ -128,26 +129,28 @@ Return
 ; ACTUAL HOTKEYS AND ACTIONS
 ;----------------------------
 
-NumPad0:: 
-	Send, 0
-	TrayTip "0" Pressed, Turn off NumLock to Center Windows, , 16
-Return
-NumPad2:: 
-	Send, 2
-	TrayTip "2" Pressed, Turn off NumLock to go to First Desktop, , 16
-Return
-NumPad4::
-	Send, 4
-	TrayTip "4" Pressed, Turn off NumLock to move left 1 Desktop, , 16
-Return
-NumPad6:: 
-	Send, 6
-	TrayTip "6" Pressed, Turn off NumLock to move right 1 Desktop, , 16
-Return
-NumPad8:: 
-	Send, 8
-	TrayTip "8" Pressed, Turn off NumLock to go to First Desktop, , 16
-Return
+
+
+;NumPad0:: 
+;	Send, 0
+;	TrayTip "0" Pressed, Turn off NumLock to Center Windows, , 16
+;Return
+;NumPad2:: 
+;	Send, 2
+;	TrayTip "2" Pressed, Turn off NumLock to go to First Desktop, , 16
+;Return
+;NumPad4::
+;	Send, 4
+;	TrayTip "4" Pressed, Turn off NumLock to move left 1 Desktop, , 16
+;Return
+;NumPad6:: 
+;	Send, 6
+;	TrayTip "6" Pressed, Turn off NumLock to move right 1 Desktop, , 16
+;Return
+;NumPad8:: 
+;	Send, 8
+;	TrayTip "8" Pressed, Turn off NumLock to go to First Desktop, , 16
+;Return
 
 NumPadDiv::
 	if (GetKeyState("NumLock", "T"))
@@ -176,6 +179,7 @@ Return
 Return
 
 ; LEFT HALF OF SCREEN
+LeftHalf:
 ^!NumPadLeft::
 	WinGetTitle, Title, A
 	WinRestore, %Title%
