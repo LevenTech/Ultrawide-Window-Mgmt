@@ -14,16 +14,26 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 ;-----------------------------------|
 
 
+
+
 ; TRAY ICON CONFIGURATION
 ;-------------------------
 	Menu, Tray, Tip,Ultrawide Windows by LevenTech
 	Menu, Tray, Icon, %A_ScriptDir%\Icons\Ultrawide` Windows.ico, 1, 0
 	 
-	Menu, Tray, Add, Instructions, MyHelp
-	Menu, Tray, Default, Instructions 
 	Menu, Tray, NoStandard
-	Menu, Tray, Standard
 
+	Menu, Tray, Add, Instructions, MyHelp
+	Menu, Tray, Default, Instructions
+	Menu, Tray, Add, Edit Script, EditScript
+	Menu, Tray, Add
+
+	#Include %A_ScriptDir%\..\SeeThroughOrNot\
+	#Include SeeThroughOrNot_addon.ahk
+
+	;Menu, Tray, Standard
+	;Menu, Tray, Add 
+	
 
 ; SCREEN PIXEL CONFIGURATION
 ;----------------------------
@@ -56,45 +66,66 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 	HalfStandardWidth = 1109
 
 
-#Include %A_ScriptDir%\..\SeeThroughOrNot\
-#Include SeeThroughOrNot_addon.ahk
+
+
+Return
+;--------------------------------------------------------------------------
+;-----------------     END OF INITIAL RUN       ---------------------------
+;--------------------------------------------------------------------------
+
+
+EditScript: 
+	Run, notepad++.exe "%A_ScriptDir%\Ultrawide` Windows.ahk"
 Return
 
 
 ; HELP TEXT
 ;-----------
 MyHelp: 
-	message = 
-	message = %message%`n NumLock should be OFF`n`n`n
-	message = %message%`n VIRTUAL DESKTOPS
+	message = NumLock should be OFF
+
+	message = %message%`n`n
+	message = %message%`n  DESKTOP
+	message = %message%`n -------------------------------------------
+	message = %message%`n  "." (period): `t`tNext Desktop Background
+
+	message = %message%`n`n
+	message = %message%`n  BRIGHTNESS
+	message = %message%`n -------------------------------------------
+	message = %message%`n  Ctrl + Alt + "-" (minus): `tIncrease Brightness
+	message = %message%`n  Ctrl + Alt + "+" (plus): `tReduce Brightness
+
+	message = %message%`n`n
+	message = %message%`n  VIRTUAL DESKTOPS
 	message = %message%`n -------------------------------------------
 	message = %message%`n  Numpad 4/Left: `t`tMove Left 1 Desktop
 	message = %message%`n  Numpad 6/Right: `t`tMove Right 1 Desktop
-	message = %message%`n  Numpad 2/Down: `tFirst Desktop
-	message = %message%`n  Numpad 8/Up: `t`tLast Desktop
+	message = %message%`n  Numpad 2/Down: `t`tGo to First Desktop
+	message = %message%`n  Numpad 8/Up: `t`tGo to Last Desktop
 	message = %message%`n
-	message = %message%`n  Ctrl+Windows+1: `t`tDesktop #1
-	message = %message%`n  Ctrl+Windows+2: `t`tDesktop #2
-	message = %message%`n  Ctrl+Windows+3: `t`tDesktop #3
-	message = %message%`n  Ctrl+Windows+4: `t`tDesktop #4
+	message = %message%`n  Ctrl + Windows + 1: `tGo to Desktop #1
+	message = %message%`n  Ctrl + Windows + 2: `tGo to Desktop #2
+	message = %message%`n  Ctrl + Windows + 3: `tGo to Desktop #3
+	message = %message%`n  Ctrl + Windows + 4: `tGo to Desktop #4
 
-	message = %message%`n`nSCREEN POSITION/SIZE
+	message = %message%`n`n
+	message = %message%`n  WINDOW POSITION/SIZE
 	message = %message%`n -------------------------------------------
-	message = %message%`n NumPad 0: `t`tRegular Widescreen, Centered
-	message = %message%`n NumPad /: `t`tMaximize/Restore Toggle
+	message = %message%`n  NumPad 0: `t`tRegular Widescreen, Centered
+	message = %message%`n  NumPad /: `t`tMaximize/Restore Toggle
 	message = %message%`n
-	message = %message%`n Windows + NumPad 7: `tTop Left Corner
-	message = %message%`n Windows + NumPad 9: `tTop Right Corner
-	message = %message%`n Windows + NumPad 1: `tBottom Left Corner
-	message = %message%`n Windows + NumPad 3: `tBottom Right Corner
+	message = %message%`n  Windows + NumPad 7: `tTop Left Corner
+	message = %message%`n  Windows + NumPad 9: `tTop Right Corner
+	message = %message%`n  Windows + NumPad 1: `tBottom Left Corner
+	message = %message%`n  Windows + NumPad 3: `tBottom Right Corner
 	message = %message%`n
-	message = %message%`n Ctrl + NumPad 4: `t`tLeft Third
-	message = %message%`n Alt + NumPad 4: `t`tLeft Third Fill (Center and Right Thirds)
+	message = %message%`n  Ctrl `t+ NumPad 4: `tLeft Third
+	message = %message%`n  Alt `t+ NumPad 4: `tLeft Third Fill (Center and Right Thirds)
 	message = %message%`n
-	message = %message%`n Ctrl + NumPad 5: `t`tCenter Third
+	message = %message%`n  Ctrl `t+ NumPad 5: `tCenter Third
 	message = %message%`n
-	message = %message%`n Ctrl + NumPad 6: `t`tRight Third
-	message = %message%`n Alt + NumPad 6: `t`tRight Third Fill (Left and Center Thirds)
+	message = %message%`n  Ctrl `t+ NumPad 6: `tRight Third
+	message = %message%`n  Alt `t+ NumPad 6: `tRight Third Fill (Left and Center Thirds)
 	MsgBox, , Ultrawide Windows by LevenTech, %message%
 Return
 
@@ -128,29 +159,6 @@ Return
 
 ; ACTUAL HOTKEYS AND ACTIONS
 ;----------------------------
-
-
-
-;NumPad0:: 
-;	Send, 0
-;	TrayTip "0" Pressed, Turn off NumLock to Center Windows, , 16
-;Return
-;NumPad2:: 
-;	Send, 2
-;	TrayTip "2" Pressed, Turn off NumLock to go to First Desktop, , 16
-;Return
-;NumPad4::
-;	Send, 4
-;	TrayTip "4" Pressed, Turn off NumLock to move left 1 Desktop, , 16
-;Return
-;NumPad6:: 
-;	Send, 6
-;	TrayTip "6" Pressed, Turn off NumLock to move right 1 Desktop, , 16
-;Return
-;NumPad8:: 
-;	Send, 8
-;	TrayTip "8" Pressed, Turn off NumLock to go to First Desktop, , 16
-;Return
 
 NumPadDiv::
 	if (GetKeyState("NumLock", "T"))
