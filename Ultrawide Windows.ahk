@@ -238,9 +238,11 @@ Return
 
 ; CENTER
 NumPadIns::
-	WinGetTitle, Title, A
-	WinRestore, %Title%
-	WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%StandardWidth%,%StandardHeight%
+	if GetKeyState("Capslock","T") {
+		WinGetTitle, Title, A
+		WinRestore, %Title%
+		WinMove, %Title% ,, %StandardLeft%,%StandardTop%,%StandardWidth%,%StandardHeight%
+	}
 Return
 
 ; LEFT-CENTER
@@ -296,31 +298,41 @@ Return
 
 ; MOVE 1 SCREEN RIGHT
 NumpadRight::
-	Send, ^#{Right}
+	if GetKeyState("Capslock","T") {
+		Send, ^#{Right}
+	}
 Return
 
 ; WIN-TAB (SHOW ALL DESKTOPS AND WINDOWS)
 NumpadClear::
-	Send, #{Tab}
+	if GetKeyState("Capslock","T") {
+		Send, #{Tab}
+	}
 Return
 	
 ; MOVE 1 SCREEN LEFT
 NumpadLeft::
-	Send, ^#{Left}
+	if GetKeyState("Capslock","T") {
+		Send, ^#{Left}
+	}
 Return
 
 ; GO TO LAST DESKTOP
 NumPadUp::
-    global CurrentDesktop, DesktopCount
-    mapDesktopsFromRegistry()
-	switchDesktopByNumber(DesktopCount)
+	if GetKeyState("Capslock","T") {
+		global CurrentDesktop, DesktopCount
+		mapDesktopsFromRegistry()
+		switchDesktopByNumber(DesktopCount)
+	}
 Return
 
 ; GO TO FIRST DESKTOP
 NumPadDown::
 #^1::
 #^NumPad1::
-	switchDesktopByNumber(1)
+	if GetKeyState("Capslock","T") {
+		switchDesktopByNumber(1)
+	}
 Return
 
 ; GO TO DESKTOP 2
